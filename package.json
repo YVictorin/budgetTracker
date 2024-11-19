@@ -1,0 +1,12 @@
+{
+  "name": "budgettracker",
+  "version": "1.0.0",
+  "main": "Budget.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.81.0"
+  }
+}

@@ -8,7 +8,7 @@ class Budget {
 
     constructor() {}
 
-    
+
 
 
 }

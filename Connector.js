@@ -1,18 +1,15 @@
 //Connects the Budget and UI classes
 
 class Connector {
-    constructor() {
-        const UI = new UI();
-        const Budget = new Budget();
+    constructor() {      
+        this.budget = new Budget();
+        this.ui = new UI();
     }
 
-    updateIncomeInputs() {
 
-    }
+    updateIncomeInputs() {}
 
-    updateExpenseInputs() {
-
-    }
+    updateExpenseInputs() {}
 
 
 

@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$clr-success: #558052;
+$clr-error: #8E1010;
+$clr-font-blk: #3E3E3E;
+
+
+@mixin cashflow-item-style($color: $clr-success) {
+    background-color: white;
+    width: 100%;
+    border: 1.5px solid $color;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    white-space: nowrap;
+
+
+    span { 
+       opacity: 0.5;
+        margin-right: 22rem;
+    }
+
+    p:nth-last-child(2) {
+        color: $color;
+    }
+
+    p:first-child {
+        font-weight: 500;
+        margin-right: 1rem;
+    }
+
+}
+
+@mixin gradient($color1, $color2) {
+    background: linear-gradient(to bottom, $color1, $color2);
+}
+
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    @include gradient(white, #DCF4FC);
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;   
+}
+
+header {
+    width: 100%;
+    height: 8%;
+    padding: 3rem;
+    margin-left: 15.5rem;
+
+    // lines up title horizontally with the main form 
+    @media(width < 480px) {
+        margin-left: 3.9rem;
+    }
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    padding: 0rem 5rem 5rem 5rem;
+}
+
+.main__content-wrapper {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 1fr 1fr;
+    place-items: center;
+    width: 90%;
+    height: 90%;
+    position: relative;
+    bottom: 10%;
+
+    svg {
+        grid-column: 2;
+    }
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+.balance__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+    position: relative;
+    top: 3rem;
+    
+    *:not(.balance__form select) {
+        grid-row: 2;
+    }
+}
+
+%base-input {
+    height: 2.5rem;
+    width: 15rem;
+    border-radius: 2px;
+    padding-left: 0.5rem;
+}
+
+%valid-input {
+    @extend %base-input;
+    border: 1.5px solid $clr-success;
+}
+
+%invalid-input {
+    @extend %base-input;
+    border: 1.5px solid $clr-error;
+}
+
+.valid-input, .balance__input {
+    @extend %valid-input;
+}
+
+.invalid-input {
+    @extend %invalid-input;
+}
+
+.balance__form button, .balance__form input:nth-child(3) {
+    width: 100px;
+}
+
+.balance__input--dollar-sign {
+    width: 20px;
+    height: 40px;
+    position: absolute;
+    right: 25%;
+    bottom: 0;
+    border: 1px solid $clr-success;
+    border-right: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $clr-success;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.balance__form button {
+    background-color: $clr-success;
+    border: none;
+    color: white;
+    font-size: 22px;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+.main__balance-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    span:nth-child(2) {
+        opacity: 40%;
+        font-size: 15px;
+    }
+
+    h1 {
+        color: $clr-font-blk;
+        font-size: 45px;
+    }
+
+    h2 {
+        color: $clr-font-blk;
+    }
+
+    h2 span {
+        font-weight: 300;
+        color: $clr-font-blk;
+    }
+}
+
+#balance-h2 {
+    font-size: 20px;
+    color: $clr-font-blk;
+}
+
+
+
+.main__cashflow-wrapper {
+    width: 100%;
+    height: 100%;
+    grid-row: 2;
+    padding-left: 24.5%;
+    color: $clr-font-blk;
+
+    h2 {
+        font-size: 23px;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .cashflow__item--progress {
+        width: 65%;
+        height: 5px;
+        background: linear-gradient(to right, $clr-success 50%, $clr-error 50%);
+        margin-bottom: 1rem;        
+    }
+
+    .cashflow__item {
+        @include cashflow-item-style;
+
+    }
+
+    .cashflow__item--expense {
+        @include cashflow-item-style($color: $clr-error);
+    }
+
+    .cashflow__item-trash {
+        background-color: $clr-error;
+        padding: 10px;
+        padding-top: 11px;
+        margin-right: -1rem;
+        border-radius: 2px;
+        margin-left: 1rem;
+        color: white;
+        display: none;
+    }
+
+}
