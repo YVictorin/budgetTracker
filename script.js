@@ -1,4 +1,4 @@
-const budgetTracker = new Connector();
+const budgetTracker = new BudgetTrackerHandler();
 
 budgetTracker.updateExpenseInputs();
 budgetTracker.updateIncomeInputs();

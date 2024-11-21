@@ -50,7 +50,8 @@ body, html {
     @include gradient(white, #DCF4FC);
     width: 100%;
     height: 100%;
-    font-family: 'Roboto', sans-serif;   
+    font-family: 'Roboto', sans-serif;  
+    overflow: hidden; 
 }
 
 header {
@@ -68,7 +69,7 @@ header {
 .main {
     width: 100%;
     height: 100%;
-    padding: 0rem 5rem 5rem 5rem;
+    padding: 0 5rem 5rem 5rem;
 }
 
 .main__content-wrapper {

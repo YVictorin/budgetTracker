@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="scss/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Budget Tracker</title>
+    <script src="BudgetTrackerHandler.js"></script>
 </head>
 <body>
     <header> <h1>BudgeTo</h1> </header>
@@ -16,7 +17,7 @@
             <div class="main__balance-container">
                 <h2><span>Welcome</span>, John Smith</h2>
                 <span>18 Nov 2024</span>
-                <h2 id="balance-h2">BALANCE</h2>
+                <h2 id="balance-h2">GRAND TOTAL</h2>
                 <h1>$ 12.820</h1>
 
                 <div class="balance__form-container">
@@ -29,7 +30,7 @@
                         <input type="text" class="balance__input" placeholder="Description">
                        <input type="text" class="balance__input" placeholder="$00.00"></input>
                        <div class="balance__input--dollar-sign">$</div>
-                        <button type="submit">ADD</button>
+                        <button id="submitBtn" type="submit">ADD</button>
                     </form>
                 </div>
             </div>
@@ -723,8 +724,8 @@
 
 
     <script src="Budget.js"></script>
-    <script src="UI.js"></script>
-    <script src="Connector.js"></script>
+    <script src="DOMInteractionHandler.js"></script>
+    <script type="module" src="BudgetTrackerHandler.js"></script> 
     <script src="script.js"></script>
 </body>
 </html>
