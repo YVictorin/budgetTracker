@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="scss/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Budget Tracker</title>
-    <script src="BudgetTrackerHandler.js"></script>
 </head>
 <body>
     <header> <h1>BudgeTo</h1> </header>
@@ -21,9 +20,9 @@
                 <h1>$ 12.820</h1>
 
                 <div class="balance__form-container">
-                    <form action="#" class="balance__form" for="balance__input">
+                    <div class="balance__form">
                         <select name="cashflow" id="cashflow-select" class="balance__input">
-                          <option value="">Incomes or Expenses</option>
+                          <option value="default">Incomes or Expenses</option>
                             <option value="income">Income</option>
                             <option value="expense">Expense</option>
                         </select>
@@ -31,7 +30,8 @@
                        <input type="text" class="balance__input" placeholder="$00.00"></input>
                        <div class="balance__input--dollar-sign">$</div>
                         <button id="submitBtn" type="submit">ADD</button>
-                    </form>
+                    </div>
+
                 </div>
             </div>
               <!-- svg of the house -->
@@ -565,7 +565,7 @@
                 <clipPath id="clip0_3_326">
                 <rect width="411.78" height="343.03" fill="white"/>
                 </clipPath>
-            </defs></svg>  
+            </defs></svg>
 
             <!-- svg of the person -->
             <svg xmlns="http://www.w3.org/2000/svg" width="351" height="312" viewBox="0 0 351 312" fill="none">
@@ -661,56 +661,57 @@
                 <div class="main__cashflow-wrapper">
                     <h2>RECORD OF CASHFLOW</h2>
                     <div class="cashflow__item--progress"></div>
-                    <div class="cashflow__item">
-                        <p>Salary</p>
-                        <span>18-Nov-2024</span>
-                        <p>$2,000</p>
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
-                    <div class="cashflow__item--expense">
-                        <p>Netflix</p>
-                        <span>18-Nov-2024</span>
-                        <p>$10</p>
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
-                    <div class="cashflow__item--expense">
-                        <p>Spotify</p>
-                        <span>18-Nov-2024</span>
-                        <p>$12</p>
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
-                    <div class="cashflow__item">
-                        <p>Refund</p>
-                        <span>18-Nov-2024</span>
-                        <p>$100</p>
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
-                    <div class="cashflow__item--expense">
-                        <p>Shopping Spree</p>
-                        <span>18-Nov-2024</span>
-                        <p>$200</p>
 
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
+<!--                    <div class="cashflow__wrapper cashflow__item">-->
+<!--                        <p>Salary</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$2,000</p>-->
+<!--                        <div class="cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cashflow__wrapper cashflow__item&#45;&#45;expense">-->
+<!--                        <p>Netflix</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$10</p>-->
+<!--                        <div class="cashflow__wrapper cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cashflow__wrapper cashflow__item&#45;&#45;expense">-->
+<!--                        <p>Spotify</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$12</p>-->
+<!--                        <div class="cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cashflow__wrapper cashflow__item">-->
+<!--                        <p>Refund</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$100</p>-->
+<!--                        <div class="cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="cashflow__wrapper cashflow__item&#45;&#45;expense">-->
+<!--                        <p>Shopping Spree</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$200</p>-->
 
-                    </div>
-                    <div class="cashflow__item--expense">
-                        <p>Groceries</p>
-                        <span>18-Nov-2024</span>
-                        <p>$150</p>
-                        <div class="cashflow__item-trash">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </div>
-                    </div>
+<!--                        <div class="cashflow__wrapper cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                    <div class="cashflow__wrapper cashflow__item&#45;&#45;expense">-->
+<!--                        <p>Groceries</p>-->
+<!--                        <span>18-Nov-2024</span>-->
+<!--                        <p>$150</p>-->
+<!--                        <div class="cashflow__item-trash">-->
+<!--                            <i class="fa-solid fa-trash-can"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
         </div>     
 
@@ -719,13 +720,12 @@
      
     </main>
 
-         
-        
 
 
-    <script src="Budget.js"></script>
+
     <script src="DOMInteractionHandler.js"></script>
-    <script type="module" src="BudgetTrackerHandler.js"></script> 
-    <script src="script.js"></script>
+    <script src="Budget.js"></script>
+    <script src="BudgetTrackerHandler.js"></script>
+    <script  src="script.js"></script>
 </body>
 </html>

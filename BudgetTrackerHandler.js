@@ -8,13 +8,19 @@ class BudgetTrackerHandler {
 
 
 
-    updateIncomeInputs() {
-        this.DOMHandler.processDOMInputValues();
+    updateTotal() {
+       this.DOMHandler.processDOMInputValues(({usersIncome, usersExpenses}) => {
+           console.log(usersIncome, usersExpenses);
+       })
+       
+       
+        // this.budget.expense(userAmt);
     }
 
     updateExpenseInputs() {
-
     }
+
+    updateIncomeInputs() {}
 
 
 

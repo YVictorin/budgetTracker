@@ -213,11 +213,15 @@ input:focus, select:focus {
 
     .cashflow__item {
         @include cashflow-item-style;
-
     }
+
 
     .cashflow__item--expense {
         @include cashflow-item-style($color: $clr-error);
+
+        p:nth-child(2) {
+            color: $clr-error !important;
+        }
     }
 
     .cashflow__item-trash {
