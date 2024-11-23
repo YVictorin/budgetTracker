@@ -69,7 +69,7 @@ class DOMInteractionHandler {
     
     updateDOMSummaryValue(sum) {
         const grandTotal = document.getElementById('grand-total');
-        grandTotal.textContent = `$${Math.abs(sum).toFixed(2)}`;  //sum will be a positive values
+        grandTotal.textContent = `$${(sum).toFixed(2)}`;  
     }
 }
 
