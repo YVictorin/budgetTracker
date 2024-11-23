@@ -6,23 +6,18 @@ class BudgetTrackerHandler {
 
     constructor() {}
 
+    updateGrandTotal() {
+        this.DOMHandler.processDOMInputValues(({ amount, type }) => {
+            if (type === "income") {
+                this.budget.income = amount;
+            } else {
+                this.budget.expenses = amount;
+            }
 
-
-    updateTotal() {
-       this.DOMHandler.processDOMInputValues(({usersIncome, usersExpenses}) => {
-           console.log(usersIncome, usersExpenses);
-       })
-       
-       
-        // this.budget.expense(userAmt);
+            const total = this.budget.whatIsMyBudget();
+            this.DOMHandler.updateDOMSummaryValue(total);
+        });
     }
-
-    updateExpenseInputs() {
-    }
-
-    updateIncomeInputs() {}
-
-
 
 }
 

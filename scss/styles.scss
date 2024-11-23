@@ -59,6 +59,7 @@ header {
     height: 8%;
     padding: 3rem;
     margin-left: 15.5rem;
+    color: $clr-font-blk;
 
     // lines up title horizontally with the main form 
     @media(width < 480px) {
