@@ -1,6 +1,4 @@
 //Encapsulates the core math of the budget tracker
-
-
 class Budget {
     #income = [];
     #expenses = [];
