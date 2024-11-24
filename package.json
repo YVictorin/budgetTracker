@@ -1,11 +1,11 @@
 {
   "name": "budgettracker",
   "version": "1.0.0",
-  "main": "src/Budget.js",
+  "main": "src/js/Budget.js",
   "keywords": [],
   "author": "",
   "scripts": {
-    "build": "sass src:dist && cp src/index.html dist/"
+    "build": "sass src:dist && cp src/index.html dist/ && cp -r src/js dist/js"
   },
   "license": "ISC",
   "description": "",
