@@ -28,6 +28,10 @@ class DOMInteractionHandler {
         let errorMsgs = document.querySelector('.balance__input--error');
         let balanceInputs = document.querySelectorAll('.balance__input');
         let dollarSign = document.querySelector('.balance__input--dollar-sign');
+        let resetBtn = document.getElementById('resetBtn');
+        let itemContainer = document.querySelector('.cashflow__item--container');
+        const grandTotal = document.getElementById('grand-total');
+
 
 
         this.getDOMInputValue((value) => {
@@ -80,7 +84,7 @@ class DOMInteractionHandler {
                         this.cashflowItems.classList.add('cashflow__item--expense');
                     }
 
-                    mainCashflowWrapper.appendChild(this.cashflowItems);
+                    itemContainer.appendChild(this.cashflowItems);
                     itemCount++;
 
                     //activate the callback function
@@ -92,6 +96,23 @@ class DOMInteractionHandler {
                 }
             }
         });
+
+        resetBtn.addEventListener('click', () => {
+            //while the item container has a first element
+            while(itemContainer.firstChild) {
+                itemContainer.removeChild(itemContainer.lastChild);  //remove the last element
+            }
+            itemCount = 0;
+        })
+        
+        //on double click reset the grand total back to 0
+        resetBtn.addEventListener('dblclick', () => {
+            grandTotal.textContent = '$0.00';
+            while(itemContainer.firstChild) {
+                itemContainer.removeChild(itemContainer.lastChild);  //remove the last element
+            }
+            itemCount = 0;
+        })
     }
     
     //updates the balance on the webpage
