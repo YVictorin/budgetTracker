@@ -18,6 +18,7 @@ header {
   height: 8%;
   padding: 3rem;
   margin-left: 15.5rem;
+  margin-bottom: 1rem;
   color: #3E3E3E;
 }
 
@@ -92,6 +93,10 @@ input:focus, select:focus {
   font-size: 20px;
 }
 
+.balance__input--error {
+  font-family: "Roboto", sans-serif;
+}
+
 .balance__form button {
   background-color: #558052;
   border: none;
@@ -115,6 +120,7 @@ input:focus, select:focus {
   grid-template-rows: 1fr 1fr;
   margin-top: 20px;
   margin-bottom: 20px;
+  transform: translateY(2rem);
 }
 .main__balance-container span:nth-child(2) {
   opacity: 40%;
@@ -262,7 +268,11 @@ input:focus, select:focus {
     margin-top: 2rem;
   }
   .balance__input--dollar-sign {
+    top: 0;
     left: 20rem;
+  }
+  .balance__input--error {
+    transform: translateY(-2.5rem);
   }
   header {
     margin-left: -1rem;
@@ -282,7 +292,7 @@ input:focus, select:focus {
     transform: translateX(-3rem);
   }
   .main__cashflow-wrapper .cashflow__item--expense, .main__cashflow-wrapper .cashflow__item {
-    width: 125vw;
+    width: 125vw !important;
     padding: 1.5rem;
     border-radius: 5px;
     transform: translateX(-3rem);

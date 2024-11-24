@@ -1,3 +1,4 @@
+//Handles all the DOM Manipulation
 class DOMInteractionHandler {
     submitBtn = document.getElementById('submitBtn');
     inputtedAmount;
@@ -36,8 +37,8 @@ class DOMInteractionHandler {
         });
 
         submitBtn.addEventListener('click', (e) => {
-            //error handling
-            if(!this.inputtedAmount) {
+            // error handling
+            if(!this.inputtedAmount || isNaN(this.inputtedAmount)) {
                 errorMsgs.style.visibility = 'visible';
                 balanceInputs.forEach(input => {
                     input.style.borderColor = '#8E1010';
@@ -52,14 +53,15 @@ class DOMInteractionHandler {
                 })
                 dollarSign.style.borderColor = '#558052';
                 dollarSign.style.color = '#558052';
+                
 
-                
-                
+                // styling and adding to the DOM 
                 let selectElem = document.getElementById('cashflow-select');
                 let optionsIndex = selectElem.selectedIndex;
                 let anOption = selectElem.options[optionsIndex].value;
                 let cashflowItemAmt = document.createElement('p');
 
+                //no more than 7 items at a time
                 if (itemCount <= 7) {
                     this.cashflowItems = document.createElement('div');
 
@@ -92,10 +94,13 @@ class DOMInteractionHandler {
         });
     }
     
+    //updates the balance on the webpage
     updateDOMSummaryValue(sum) {
         const grandTotal = document.getElementById('grand-total');
         grandTotal.textContent = `$${(sum).toFixed(2)}`;  
     }
+    
+    
     
 }
 
