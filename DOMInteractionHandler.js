@@ -4,7 +4,8 @@ class DOMInteractionHandler {
     inputtedAmount;
     inputtedDesc;
     cashflowItems;
-
+    userAnswers;
+    
     constructor() {}
     
 
@@ -16,14 +17,14 @@ class DOMInteractionHandler {
         const [_, userAmt] = inputs;  //retrieves the amount
 
         this.submitBtn.addEventListener('click', (e) => {
-            const userChoicesVal = userDesc.value + ' ' + userAmt.value;
+            const userChoicesVal = userDesc.value + ' ' + userAmt.value; //maybe should have reconsidered this
             callback(userChoicesVal);
         });
     }
 
     processDOMInputValues(callback) {
         let itemCount = 0;
-        const mainCashflowWrapper = document.querySelector('.main__cashflow-wrapper');
+        let answerWithSpaces;
         const submitBtn = document.getElementById('submitBtn');
         let errorMsgs = document.querySelector('.balance__input--error');
         let balanceInputs = document.querySelectorAll('.balance__input');
@@ -31,34 +32,43 @@ class DOMInteractionHandler {
         let resetBtn = document.getElementById('resetBtn');
         let itemContainer = document.querySelector('.cashflow__item--container');
         const grandTotal = document.getElementById('grand-total');
+        
 
-
-
+        
         this.getDOMInputValue((value) => {
-            let userAnswers = value.split(" ");
-            this.inputtedAmount = userAnswers[1];
-            this.inputtedDesc = userAnswers[0];
+             this.userAnswers = value.split(" ");
+            this.inputtedAmount = this.userAnswers[1]; 
+            this.inputtedDesc = this.userAnswers[0];
         });
 
-        submitBtn.addEventListener('click', (e) => {
-            // error handling
-            if(!this.inputtedAmount || isNaN(this.inputtedAmount)) {
+        submitBtn.addEventListener('click', () => {
+            //if the user enters a description with spaces
+            const splitAnswers = this.userAnswers;  //copy the userAnswers array
+            const potentialAmount = splitAnswers[splitAnswers.length - 1]; // Last element should be the amount
+            const potentialDesc = splitAnswers.slice(0, -1).join(" "); // Returns a new array from the first two elements joined by spaces
+            
+            //error handling
+            if (isNaN(potentialAmount) || potentialAmount === '') {
                 errorMsgs.style.visibility = 'visible';
                 balanceInputs.forEach(input => {
                     input.style.borderColor = '#8E1010';
-                })
-                
+                });
                 dollarSign.style.borderColor = '#8E1010';
                 dollarSign.style.color = '#8E1010';
             } else {
+                this.inputtedAmount = potentialAmount;           //only update these values if the input is valid
+                answerWithSpaces = potentialDesc;
+                
                 errorMsgs.style.visibility = 'hidden';
                 balanceInputs.forEach(input => {
                     input.style.borderColor = '#558052';
-                })
+                });
                 dollarSign.style.borderColor = '#558052';
                 dollarSign.style.color = '#558052';
-                
 
+                
+                
+                
                 // styling and adding to the DOM 
                 let selectElem = document.getElementById('cashflow-select');
                 let optionsIndex = selectElem.selectedIndex;
@@ -70,7 +80,7 @@ class DOMInteractionHandler {
                     this.cashflowItems = document.createElement('div');
 
                     let cashflowItemName = document.createElement('p');
-                    cashflowItemName.textContent = this.inputtedDesc;
+                    cashflowItemName.textContent = !answerWithSpaces ? this.userAnswers[0] : answerWithSpaces; //if user entered no spaces for description use the single word answer
                     cashflowItemName.style.color = '#3E3E3E';
                     this.cashflowItems.appendChild(cashflowItemName);
 
@@ -89,7 +99,7 @@ class DOMInteractionHandler {
 
                     //activate the callback function
                     callback({
-                        amount: this.inputtedAmount,   // The actual amount entered
+                        amount: this.inputtedAmount,   // The amount entered
                         type: anOption                // Whether it's "income" or "expense"
                     });
 
@@ -103,6 +113,21 @@ class DOMInteractionHandler {
                 itemContainer.removeChild(itemContainer.lastChild);  //remove the last element
             }
             itemCount = 0;
+            for(let i = 0; i < balanceInputs.length; i++) {
+                if(i >= 1){
+                   balanceInputs[i].value = ''; 
+                }
+            }
+
+            setTimeout(() => {
+                errorMsgs.style.visibility = 'hidden';
+                balanceInputs.forEach(input => {
+                    input.style.borderColor = '#558052';
+                });
+                dollarSign.style.borderColor = '#558052';
+                dollarSign.style.color = '#558052';
+            }, 250)
+           
         })
         
         //on double click reset the grand total back to 0
@@ -111,6 +136,16 @@ class DOMInteractionHandler {
             while(itemContainer.firstChild) {
                 itemContainer.removeChild(itemContainer.lastChild);  //remove the last element
             }
+            for(let i = 0; i < balanceInputs.length; i++) {
+                if(i >= 1){
+                    balanceInputs[i].value = '';
+                }
+            }
+            callback({
+                type: 'reset',
+                amount: 0
+            });
+            
             itemCount = 0;
         })
     }

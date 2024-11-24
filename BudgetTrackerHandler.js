@@ -7,6 +7,12 @@ class BudgetTrackerHandler {
 
     updateGrandTotal() {
         this.DOMHandler.processDOMInputValues(({ amount, type }) => {
+            if (type === 'reset') {
+                // Reset the budget
+                this.budget = new Budget(); // resets the budget by instantiating a brand-new budget 
+                return;
+            }
+
             if (type === "income") {
                 this.budget.income = amount;
             } else {
