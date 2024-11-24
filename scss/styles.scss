@@ -20,7 +20,7 @@ $clr-font-blk: #3E3E3E;
 
 
     span {
-       opacity: 0.5;
+        opacity: 0.5;
         margin-right: 22rem;
     }
 
@@ -159,6 +159,15 @@ input:focus, select:focus {
     font-weight: 600;
 }
 
+.balance__input--error {
+    display: flex;
+    position: relative;
+    top: 3rem;
+    gap: 11.7rem;
+    color: $clr-error;
+    visibility: hidden;
+}
+
 .main__balance-container{
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -275,7 +284,7 @@ input:focus, select:focus {
     body {
         overflow-y: visible;
     }
-  #house-svg {
+    #house-svg {
         transform: scale(0.7) translateY(-5rem);
         transform-origin: center;
     }
@@ -305,10 +314,7 @@ input:focus, select:focus {
     .balance__form {
         width: 100vw;
         display: grid;
-
-        select {
-           grid-column-end: span 2;
-        }
+        grid-template-rows: 1fr 1fr 1fr;
     }
 
     .main__cashflow-wrapper {

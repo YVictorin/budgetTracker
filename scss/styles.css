@@ -101,6 +101,15 @@ input:focus, select:focus {
   font-weight: 600;
 }
 
+.balance__input--error {
+  display: flex;
+  position: relative;
+  top: 3rem;
+  gap: 11.7rem;
+  color: #8E1010;
+  visibility: hidden;
+}
+
 .main__balance-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -261,9 +270,7 @@ input:focus, select:focus {
   .balance__form {
     width: 100vw;
     display: grid;
-  }
-  .balance__form select {
-    grid-column-end: span 2;
+    grid-template-rows: 1fr 1fr 1fr;
   }
   .main__cashflow-wrapper {
     margin-top: 8rem;

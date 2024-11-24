@@ -13,7 +13,7 @@ class BudgetTrackerHandler {
             } else {
                 this.budget.expenses = amount;
             }
-
+            
             const total = this.budget.whatIsMyBudget();
             this.DOMHandler.updateDOMSummaryValue(total);
         });
