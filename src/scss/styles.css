@@ -155,11 +155,12 @@ input:focus, select:focus {
 }
 
 .main__cashflow-wrapper {
-  padding-top: 2rem;
   width: 100%;
   height: 100%;
   grid-row: 2;
-  padding-left: 19%;
+  position: absolute;
+  left: 6%;
+  top: 50%;
   color: #3E3E3E;
 }
 .main__cashflow-wrapper h2 {
@@ -168,7 +169,7 @@ input:focus, select:focus {
   margin-bottom: 0.5rem;
 }
 .main__cashflow-wrapper .cashflow__item--progress {
-  width: 65%;
+  width: 50%;
   height: 5px;
   background: linear-gradient(to right, #558052 50%, #8E1010 50%);
   margin-bottom: 1rem;
@@ -245,6 +246,7 @@ input:focus, select:focus {
   }
   .main__content-wrapper {
     transform: translateX(10%);
+    position: relative;
   }
   .main__cashflow-wrapper {
     padding-left: 3rem;
@@ -262,6 +264,16 @@ input:focus, select:focus {
   header {
     margin: 5px;
     margin-bottom: 2rem;
+  }
+}
+@media (width >= 1500px) {
+  .main__cashflow-wrapper {
+    position: static;
+    padding-top: 2rem;
+    padding-left: 19%;
+  }
+  .main__cashflow-wrapper .cashflow__item--progress {
+    width: 65%;
   }
 }
 @media (width <= 500px) {
