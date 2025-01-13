@@ -163,6 +163,7 @@ input:focus, select:focus {
 
 }
 
+
 .balance__input--error {
     display: flex;
     position: relative;
@@ -203,7 +204,12 @@ input:focus, select:focus {
     color: $clr-font-blk;
 }
 
-
+.main__balance-title {
+    scale: 0.8;
+    position: relative;
+    top: -100%;
+    left: -10%;
+}
 
 .main__cashflow-wrapper {
     padding-top: 2rem;
@@ -257,6 +263,7 @@ input:focus, select:focus {
     body {
         overflow-y: visible;
     }
+
 
     #house-svg {
         transform: scale(0.8);
